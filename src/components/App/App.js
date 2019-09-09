@@ -13,7 +13,7 @@ import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
-import AboutPage from '../AboutPage/AboutPage';
+import AboutPage from '../AddSpot/AddSpot';
 import UserPage from '../UserPage/UserPage';
 import MainPage from '../MainPage/MainPage';
 
@@ -52,7 +52,7 @@ class App extends Component {
             they will see the info page instead. */}
             <ProtectedRoute
               exact
-              path="/info"
+              path="/Mainpage"
               component={MainPage}
             />
             {/* If none of the other routes matched, we will show a 404. */}
