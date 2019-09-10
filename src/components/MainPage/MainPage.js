@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
-import { compose, withProps } from 'recompose';
-import { GoogleMap, LoadScript, Marker, DrawingManager, Data } from '@react-google-maps/api'
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'
 import AddButton from '../AddButton/AddButton'
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -8,6 +7,13 @@ import AddButton from '../AddButton/AddButton'
 // or even care what the redux state is, so it doesn't need 'connect()'
 
 class MainPage extends Component {
+  state={}
+
+  createSpot = () => {
+    console.log(this.state);
+    
+  }
+
   render() {
     return(
       <div>
@@ -15,18 +21,16 @@ class MainPage extends Component {
         <GoogleMap mapContainerStyle={{ height: "400px", width: "360px" }}
           zoom={5}
           center={{ lat: 46.392410, lng: -94.636230 }}
-        >
-            <Data
-              onLoad={data => {
-                console.log('data: ', data)
-              }}
-              options={{
-                controlPosition: "TOP_LEFT",
-                controls: ["Point"],
-                drawingMode: "Marker", //  "LineString" or "Polygon".
-                
-              }}
-            />
+          onClick={event => {
+              console.log(event.latLng.lat(), event.latLng.lng())
+                this.setState({
+                  ...this.state, 
+                  lat: event.latLng.lat(),
+                  lng: event.latLng.lng()
+                })
+                this.createSpot()
+            }} >
+            <Marker position={{ lat: this.state.lat, lng: this.state.lng }}></Marker>
             
         </GoogleMap>
       </LoadScript >
