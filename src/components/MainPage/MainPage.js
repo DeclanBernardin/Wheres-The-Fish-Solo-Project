@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'
 import AddButton from '../AddButton/AddButton'
 import { connect } from 'react-redux'; 
+import FishingSpotDetails from '../fishingSpotDetails/fishingSpotDetails'
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
 // It doesn't dispatch any redux actions or display any part of redux state
@@ -10,6 +11,9 @@ import { connect } from 'react-redux';
 class MainPage extends Component {
   state={}
 
+  componentDidMount(){
+    this.props.dispatch({type: 'GET_FISHING_SPOTS'})
+  }
   createSpot = () => {
     console.log(this.state);
     this.props.dispatch({
@@ -22,6 +26,7 @@ class MainPage extends Component {
   }
 
   render() {
+   
     return(
       <div>
       <LoadScript id="loadScript" googleMapsApiKey={process.env.REACT_APP_API_KEY} >
@@ -37,8 +42,8 @@ class MainPage extends Component {
                 })
                 this.createSpot()
             }} >
-            <Marker position={{ lat: this.state.lat, lng: this.state.lng }}></Marker>
             
+            <FishingSpotDetails/>
         </GoogleMap>
       </LoadScript >
       <AddButton/>
@@ -49,7 +54,11 @@ class MainPage extends Component {
 
 
 
-  
+const mapStateToProps = reduxStore => {
+  return {
+    reduxStore
+  };
+};
 
 
-export default connect()(MainPage);
+export default connect(mapStateToProps)(MainPage);

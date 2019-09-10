@@ -6,7 +6,13 @@ const router = express.Router();
  * GET route template
  */
 router.get('/', (req, res) => {
-
+    let queryText = `SELECT * FROM "fishing_spots";`;
+    pool.query(queryText)
+        .then(results => res.send(results.rows))
+        .catch(error => {
+            console.log('Error in GET route server side', error);
+            res.sendStatus(418)
+        })
 });
 
 /**
