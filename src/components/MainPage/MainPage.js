@@ -27,14 +27,7 @@ class InfoPage extends Component {
        
      
     
-     <LoadScript id="loadScript" googleMapsApiKey={process.env.REACT_APP_API_KEY} >
-        <GoogleMap mapContainerStyle={{height: "400px",width: "400px"}}
-        zoom={8}
-        center={{ lat: -34.397, lng: 150.644 }}
-        >
-          
-        </GoogleMap>
-      </LoadScript >
+  
      
     
     );
