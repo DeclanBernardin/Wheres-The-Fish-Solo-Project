@@ -32,7 +32,7 @@ class MainPage extends Component {
       <LoadScript id="loadScript" googleMapsApiKey={process.env.REACT_APP_API_KEY} >
         <GoogleMap mapContainerStyle={{ height: "400px", width: "360px" }}
           zoom={5}
-          center={{ lat: 46.392410, lng: -94.636230 }}
+          center={{ lat: 46, lng: -94 }}
           onClick={event => {
               console.log(event.latLng.lat(), event.latLng.lng())
                 this.setState({
