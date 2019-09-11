@@ -16,8 +16,9 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import AddSpot from '../AddSpot/AddSpot';
 import UserPage from '../UserPage/UserPage';
 import MainPage from '../MainPage/MainPage';
-
+import SpotDetails from '../SpotDetails/SpotDetails';
 import './App.css';
+
 
 class App extends Component {
   componentDidMount () {
@@ -39,6 +40,10 @@ class App extends Component {
               path="/addspot"
               component={AddSpot}
             />
+
+            <Route 
+            path="/spotdetails"
+            component={SpotDetails}/>
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.

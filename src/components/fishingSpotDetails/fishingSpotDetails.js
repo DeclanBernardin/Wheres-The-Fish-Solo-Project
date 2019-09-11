@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
 import { Marker, InfoWindow} from '@react-google-maps/api';
-
+import { withRouter } from 'react-router-dom';
 
 
 class fishingSpotDetails extends Component {
@@ -10,6 +10,7 @@ class fishingSpotDetails extends Component {
 
     test = () => {
         alert('test')
+        this.props.history.push('/spotdetails')
     }
 
     updateSpotLocation = () => {
@@ -56,4 +57,4 @@ const mapStateToProps = reduxStore => {
 };
 
 
-export default connect(mapStateToProps)(fishingSpotDetails);
+export default connect(mapStateToProps)(withRouter(fishingSpotDetails));
