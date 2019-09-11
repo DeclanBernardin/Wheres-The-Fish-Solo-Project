@@ -28,4 +28,15 @@ console.log(req.body);
         })
 });
 
+router.put('/:id', (req, res) => {
+    console.log(req.body);
+    console.log(req.params.id);
+    let queryText = `UPDATE "fishing_spots" SET "latitude" = $1, "longitude" = $2 WHERE "id" = $3;`
+    pool.query(queryText, [req.body.lat, req.body.lng, req.params.id])
+        .then(results => res.sendStatus(201))
+        .catch(error => {
+            console.log('error in server side PUT', error);
+        })
+})
+
 module.exports = router;

@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
 import { Marker, InfoWindow} from '@react-google-maps/api';
-import IconButton from '@material-ui/core/IconButton';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+
 
 
 class fishingSpotDetails extends Component {
@@ -21,7 +18,8 @@ class fishingSpotDetails extends Component {
             type: 'UPDATE_FISHING_SPOT',
             payload: {
                 lat: this.state.lat,
-                lng: this.state.lng
+                lng: this.state.lng,
+                id: this.state.id
             }
         })
     }
@@ -34,7 +32,8 @@ class fishingSpotDetails extends Component {
             this.setState({
                 ...this.state,
                 lat: event.latLng.lat(),
-                lng: event.latLng.lng()
+                lng: event.latLng.lng(),
+                id: details.id
             })
             this.updateSpotLocation()
         }} position={{ lat: parseFloat(details.latitude), lng: parseFloat(details.longitude) }}

@@ -3,7 +3,10 @@ import axios from 'axios';
 
 function* updateFishingSpot(action) {
     try{
-        yield axios.put('/fishing', action.payload);
+        console.log(action.payload);
+    
+        let id = action.payload.id
+        yield axios.put(`/fishing/${id}`, action.payload);
         yield put({
             type: 'GET_FISHING_SPOTS', // POST WILL AUTOMATICALLY TRIGGER THE GET 
         })
