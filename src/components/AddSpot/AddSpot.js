@@ -1,40 +1,124 @@
 import React, {Component} from 'react';
-
+import { connect } from 'react-redux'; 
+import { withRouter } from 'react-router-dom';
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is, so it doesn't need 'connect()'
 
 class AddSpot extends Component {
+  
+state={}
+
+componentDidMount(){
+  this.fetchDetails()
+}
+
+fetchDetails = (id) => {
+ console.log(this.props.match.params.id);
+this.props.dispatch({
+  type: 'GET_STUFF',
+  payload: this.props.match.params.id
+})
+}  
+cancel = () => {
+  this.props.history.push('/Mainpage')
+}
+
+
+
   render(){
     return(
       <div>
         <div>
-        <input placeholder="Name The Spot!"></input>
+          <p>{this.state.name}</p>
+          <input placeholder="Name The Spot!" onChange= {
+          this.spotName = (event) => {
+            this.setState({
+              ...this.state,
+              name: event.target.value
+            })
+
+          }
+          }></input>
         </div>
         <div>
-        <input placeholder="Pictures!"></input>
+          <img src ={this.state.pictures}></img>
+          <input placeholder="Pictures!" onChange={
+          this.pictures = (event) => {
+            this.setState({
+              ...this.state,
+              pictures: event.target.value
+            })
+
+          }
+          }></input>
         </div>
         <div>
-        <input placeholder="Weather"></input>
+          <p>{this.state.weather}</p>
+          <input placeholder="Weather" onChange={
+          this.weather = (event) => {
+            this.setState({
+              ...this.state,
+              weather: event.target.value
+            })
+
+          }
+          }></input>
         </div>
         <div>
-        <input placeholder="Time Of Year"></input>
+          <p>{this.state.timeOfYear}</p>
+          <input placeholder="Time Of Year" onChange={
+          this.timeOfYear = (event) => {
+            this.setState({
+              ...this.state,
+              timeOfYear: event.target.value
+            })
+
+          }
+          }></input>
         </div>
         <div>
-        <input placeholder="Lure Used"></input>
+          <p>{this.state.lure}</p>
+          <input placeholder="Lure Used" onChange={
+          this.lure = (event) => {
+            this.setState({
+              ...this.state,
+              lure: event.target.value
+            })
+
+          }
+          }></input>
         </div>
         <div>
-        <input placeholder="Type Of Fishing"></input>
+          <p>{this.state.typeOfFishing}</p>
+          <input placeholder="Type Of Fishing" onChange={
+          this.typeOfFishing = (event) => {
+            this.setState({
+              ...this.state,
+              typeOfFishing: event.target.value
+            })
+
+          }
+          }></input>
         </div>
         <div>
-        <input placeholder="Water Depth"></input>
+          <p>{this.state.waterDepth}</p>
+          <input placeholder="Water Depth" onChange={
+          this.waterDepth = (event) => {
+            this.setState({
+              ...this.state,
+              waterDepth: event.target.value
+            })
+
+          }
+          }></input>
         </div>
-        <button>Cancel</button>
-        <button>Create!</button>
+        <button onClick={this.cancel}>Cancel</button>
+        <button onClick={this.addDetails}>Add Details!</button>
       </div>
     )
   }
 }
 
-export default AddSpot;
+export default withRouter(connect()(AddSpot));

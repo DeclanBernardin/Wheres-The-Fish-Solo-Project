@@ -37,7 +37,7 @@ class App extends Component {
             This is a route anyone can see, no login necessary */}
             <Route
               exact
-              path="/addspot"
+              path="/addspot/:id"
               component={AddSpot}
             />
 

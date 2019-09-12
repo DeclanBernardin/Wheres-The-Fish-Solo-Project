@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
-import { Marker, InfoWindow} from '@react-google-maps/api';
+import { Marker, OverlayView} from '@react-google-maps/api';
 import { withRouter } from 'react-router-dom';
+import AddDetailsButton from '../AddButton/AddButton'
 
 
 class fishingSpotDetails extends Component {
 
-    state={}
-
-    spotDetails = () => {
-        this.props.history.push('/spotdetails')
+    state={
+        toggle: false,
     }
+
+    toEdit = (id) => {
+        this.props.history.push(`addspot/${id}`)
+    }
+
+ 
 
     updateSpotLocation = () => {
         console.log(this.state);
@@ -24,10 +29,19 @@ class fishingSpotDetails extends Component {
         })
     }
 
+    changeState = () => {
+        this.setState(prevState => ({
+            toggle: !prevState.toggle
+        }))
+        console.log(this.state.toggle);
+        
+    }
+
+
     render(){
         
     let fishingSpots = this.props.reduxStore.spotDetails.map((details, index)=> {
-        return (<Marker key= {index} draggable={true} clickable={true} onClick={this.spotDetails} onDragEnd={event => {
+        return (<Marker key= {index} draggable={true} clickable={true}  onDragEnd={event => {
             console.log(event.latLng.lat(), event.latLng.lng())
             this.setState({
                 ...this.state,
@@ -35,9 +49,26 @@ class fishingSpotDetails extends Component {
                 lng: event.latLng.lng(),
                 id: details.id
             })
-            this.updateSpotLocation()
-        }} position={{ lat: parseFloat(details.latitude), lng: parseFloat(details.longitude) }}
-         ></Marker>)
+            this.updateSpotLocation()}} 
+            position={{ lat: parseFloat(details.latitude), lng: parseFloat(details.longitude) }}
+            onClick={ this.changeState}>
+            {this.state.toggle && <OverlayView
+                position={{
+                    lat: details.latitude,
+                    lng: details.longitude
+                }}
+                mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}>
+                <div style={{
+                        background: `white`,
+                        border: `1px solid #ccc`,
+                        padding: 15
+                    }}>
+                    <h1>{details.spot_name}</h1>
+                    <button onClick={() => {this.toEdit(details.id)}} type='button'>Click me</button>
+                    <button>Delete</button>
+                </div>
+            </OverlayView>}
+            </Marker>)
     })
 
 
