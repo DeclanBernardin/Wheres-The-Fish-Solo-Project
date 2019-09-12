@@ -8,8 +8,7 @@ class fishingSpotDetails extends Component {
 
     state={}
 
-    test = () => {
-        alert('test')
+    spotDetails = () => {
         this.props.history.push('/spotdetails')
     }
 
@@ -26,9 +25,9 @@ class fishingSpotDetails extends Component {
     }
 
     render(){
-
+        
     let fishingSpots = this.props.reduxStore.spotDetails.map((details, index)=> {
-        return (<Marker key= {index} draggable={true} clickable={true} onClick={this.test} onDragEnd={event => {
+        return (<Marker key= {index} draggable={true} clickable={true} onClick={this.spotDetails} onDragEnd={event => {
             console.log(event.latLng.lat(), event.latLng.lng())
             this.setState({
                 ...this.state,
@@ -44,7 +43,7 @@ class fishingSpotDetails extends Component {
 
         return(
             <div>
-                {fishingSpots}
+                {this.props.reduxStore.spotDetails ?  fishingSpots : null }
             </div>
         )
     }

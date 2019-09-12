@@ -1,4 +1,4 @@
-const spotDetailsReducer = (state = {}, action) => {
+const spotDetailsReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_SPOTS':
             return action.payload;
