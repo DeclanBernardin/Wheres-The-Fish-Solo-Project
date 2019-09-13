@@ -12,6 +12,7 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const fishingRouter = require('./routes/fishing-spot-router')
 const detailsRouter = require('./routes/details.router')
+const getIdRouter = require('./routes/getId.router')
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,6 +28,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/fishing', fishingRouter);
 app.use('/spotDetails', detailsRouter);
+app.use('/getId', getIdRouter);
 // Serve static files
 app.use(express.static('build'));
 
