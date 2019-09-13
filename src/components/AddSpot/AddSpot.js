@@ -16,6 +16,10 @@ componentDidMount(){
 
 fetchDetails = (id) => {
  console.log(this.props.match.params.id);
+  this.setState({
+    ...this.state,
+    id: this.props.match.params.id
+  })
 this.props.dispatch({
   type: 'GET_STUFF',
   payload: this.props.match.params.id
@@ -26,11 +30,6 @@ cancel = () => {
 }
 addDetails = (id) => {
 console.log(this.state);
-console.log(this.props.match.params.id);
-this.setState({
-  ...this.state, 
-  id: this.props.match.params.id
-})
   this.props.dispatch({
     type: 'ADD_DETAILS_TO_SPOT',
     payload: this.state
