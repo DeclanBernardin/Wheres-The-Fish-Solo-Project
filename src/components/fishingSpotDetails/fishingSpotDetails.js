@@ -15,8 +15,6 @@ class fishingSpotDetails extends Component {
         this.props.history.push(`addspot/${id}`)
     }
 
- 
-
     updateSpotLocation = () => {
         console.log(this.state);
         this.props.dispatch({
