@@ -24,7 +24,8 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-app.use('/fishing', fishingRouter)
+app.use('/fishing', fishingRouter);
+app.use('/spotDetails', detailsRouter);
 // Serve static files
 app.use(express.static('build'));
 
