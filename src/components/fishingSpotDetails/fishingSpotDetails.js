@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
 import { Marker, OverlayView} from '@react-google-maps/api';
 import { withRouter } from 'react-router-dom';
-import AddDetailsButton from '../AddButton/AddButton'
+
 
 
 class fishingSpotDetails extends Component {
@@ -37,6 +37,13 @@ class fishingSpotDetails extends Component {
         
     }
 
+    handleDelete = (id) => {
+        console.log(id);
+        this.props.dispatch({
+            type: 'DELETE_SPOT',
+            payload: {id: id}
+        })
+    }
 
     render(){
         
@@ -65,7 +72,7 @@ class fishingSpotDetails extends Component {
                     }}>
                     <h1>{details.spot_name}</h1>
                     <button onClick={() => {this.toEdit(details.id)}} type='button'>Click me</button>
-                    <button>Delete</button>
+                    <button onClick={() => this.handleDelete(details.id)}>Delete</button>
                 </div>
             </OverlayView>}
             </Marker>)
