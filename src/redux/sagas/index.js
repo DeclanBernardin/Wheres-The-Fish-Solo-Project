@@ -5,6 +5,7 @@ import userSaga from './userSaga';
 import latLngSaga from './latLngSaga'
 import updateLocationSaga from './updateLocationSaga'
 import deleteSaga from './deleteSaga'
+import addDetailsSaga from './addDetails'
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
@@ -20,5 +21,6 @@ export default function* rootSaga() {
     latLngSaga(),
     updateLocationSaga(),
     deleteSaga(),
+    addDetailsSaga()
   ]);
 }
