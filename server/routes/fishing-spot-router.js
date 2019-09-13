@@ -39,4 +39,14 @@ router.put('/:id', (req, res) => {
         })
 })
 
+router.delete('/:id', (req, res) => {
+    console.log(req.params.id);
+    let queryText = `DELETE  FROM "fishing_spots" WHERE "id" = $1;`
+    pool.query(queryText, [req.params.id])
+        .then(results => res.sendStatus(201))
+        .catch(error => {
+            console.log('error in server side DELETE', error);
+        })
+})
+
 module.exports = router;
