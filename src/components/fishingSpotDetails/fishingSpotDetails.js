@@ -68,9 +68,34 @@ class fishingSpotDetails extends Component {
                         border: `1px solid #ccc`,
                         padding: 15
                     }}>
-                    <h1>{details.spot_name}</h1>
-                    <button onClick={() => {this.toEdit(details.id)}} type='button'>Click me</button>
-                    <button onClick={() => this.handleDelete(details.id)}>Delete</button>
+                    <div>
+                        <h1>{details.spot_name}</h1>
+                    </div>
+                    <div>
+                       <h3>Fish caught here:</h3> <h4>{details.fish_caught}</h4>
+                    </div>
+                    <div>
+                        <button>images</button>
+                        {/*images button */}
+                    </div>
+                    <div>
+                        <h3>Time of year:</h3> <h4>{details.time_of_year}</h4>
+                    </div>
+                    <div>
+                        <h3>lure used:</h3> <h4>{details.lure_used}</h4>
+                    </div>
+                    <div>
+                        <h3>Doing What:</h3> <h4>{details.type_of_fishing}</h4>
+                    </div>
+                    <div>
+                        <h3>Water depth:</h3> <h4>{details.water_depth}</h4>
+                    </div>
+                    <div>
+                        <button onClick={() => {this.toEdit(details.id)}} type='button'>AddDetails</button>
+                    </div>
+                    <div>
+                        <button onClick={() => this.handleDelete(details.id)}>Delete</button>
+                    </div>
                 </div>
             </OverlayView>}
             </Marker>)

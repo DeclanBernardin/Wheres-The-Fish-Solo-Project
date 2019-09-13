@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'
+import { GoogleMap, LoadScript } from '@react-google-maps/api'
 import { connect } from 'react-redux'; 
 import FishingSpotDetails from '../fishingSpotDetails/fishingSpotDetails'
 // This is one of our simplest components
@@ -40,7 +40,7 @@ class MainPage extends Component {
     return(
       <div>
       <LoadScript id="loadScript" googleMapsApiKey={process.env.REACT_APP_API_KEY} >
-        <GoogleMap mapContainerStyle={{ height: "400px", width: "360px" }}
+        <GoogleMap mapContainerStyle={{ height: "505px", width: "360px" }}
           zoom={5}
           
           center={{lat: this.state.mainCenter.lat, lng: this.state.mainCenter.lng }}

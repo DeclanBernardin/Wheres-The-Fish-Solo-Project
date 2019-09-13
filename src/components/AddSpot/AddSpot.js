@@ -24,6 +24,18 @@ this.props.dispatch({
 cancel = () => {
   this.props.history.push('/Mainpage')
 }
+addDetails = (id) => {
+console.log(this.state);
+console.log(this.props.match.params.id);
+this.setState({
+  ...this.state, 
+  id: this.props.match.params.id
+})
+  this.props.dispatch({
+    type: 'ADD_DETAILS_TO_SPOT',
+    payload: this.state
+  })
+}
 
 
 
@@ -43,7 +55,19 @@ cancel = () => {
           }></input>
         </div>
         <div>
-          <img src ={this.state.pictures}></img>
+          <p>{this.state.fishCaught}</p>
+          <input placeholder="Type of fish caught here" onChange={
+            this.spotFish = (event) => {
+              this.setState({
+                ...this.state,
+                fishCaught: event.target.value
+              })
+
+            }
+          }></input>
+        </div>
+        <div>
+          <img src ={this.state.pictures} alt= 'fish pictures'></img>
           <input placeholder="Pictures!" onChange={
           this.pictures = (event) => {
             this.setState({
