@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
 import { Marker, OverlayView} from '@react-google-maps/api';
 import { withRouter } from 'react-router-dom';
-
+import Overlay from '../Overlay/Overlay'
 
 
 class fishingSpotDetails extends Component {
@@ -11,9 +11,7 @@ class fishingSpotDetails extends Component {
         toggle: false,
     }
 
-    toEdit = (id) => {
-        this.props.history.push(`addspot/${id}`)
-    }
+    
 
     updateSpotLocation = () => {
         console.log(this.state);
@@ -27,21 +25,26 @@ class fishingSpotDetails extends Component {
         })
     }
 
-    changeState = () => {
-        this.setState(prevState => ({
-            toggle: !prevState.toggle
-        }))
-        console.log(this.state.toggle);
-        
+    changeState = (id) => {
+        this.setState({
+            ...this.state,
+            overlayId: id
+        })
+        console.log(id);
+        if (this.state.overlayId === this.props.reduxStore.overlayReducer.id){
+            this.props.dispatch({
+                type: 'CLEAR_REDUCER'
+            })
+        } else {
+            this.props.dispatch({
+                type: 'GETTING_AN_ID',
+                payload: { id: id }
+            })
+            
+        }
     }
 
-    handleDelete = (id) => {
-        console.log(id);
-        this.props.dispatch({
-            type: 'DELETE_SPOT',
-            payload: {id: id}
-        })
-    }
+   
 
     render(){
         
@@ -56,48 +59,8 @@ class fishingSpotDetails extends Component {
             })
             this.updateSpotLocation()}} 
             position={{ lat: parseFloat(details.latitude), lng: parseFloat(details.longitude) }}
-            onClick={ this.changeState}>
-            {this.state.toggle && <OverlayView
-                position={{
-                    lat: details.latitude,
-                    lng: details.longitude
-                }}
-                mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}>
-                <div style={{
-                        background: `white`,
-                        border: `1px solid #ccc`,
-                        padding: 15
-                    }}>
-                    <div>
-                        <h1>{details.spot_name}</h1>
-                    </div>
-                    <div>
-                       <h3>Fish caught here:</h3> <h4>{details.fish_caught}</h4>
-                    </div>
-                    <div>
-                        <button>images</button>
-                        {/*images button */}
-                    </div>
-                    <div>
-                        <h3>Time of year:</h3> <h4>{details.time_of_year}</h4>
-                    </div>
-                    <div>
-                        <h3>lure used:</h3> <h4>{details.lure_used}</h4>
-                    </div>
-                    <div>
-                        <h3>Doing What:</h3> <h4>{details.type_of_fishing}</h4>
-                    </div>
-                    <div>
-                        <h3>Water depth:</h3> <h4>{details.water_depth}</h4>
-                    </div>
-                    <div>
-                        <button onClick={() => {this.toEdit(details.id)}} type='button'>AddDetails</button>
-                    </div>
-                    <div>
-                        <button onClick={() => this.handleDelete(details.id)}>Delete</button>
-                    </div>
-                </div>
-            </OverlayView>}
+            onClick={() => this.changeState(details.id)}>
+            {this.props.reduxStore.overlayReducer.id && (<Overlay details = {details}/>)}
             </Marker>)
     })
 
