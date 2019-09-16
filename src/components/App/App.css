@@ -1,6 +1,22 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
+    background-image: url("https://raw.githubusercontent.com/DeclanBernardin/Wheres-The-Fish-Solo-Project/master/thumbnail%20(1).jpeg");
+    background-size: 360px 640px
+}
+
+
+.login{
+    color: white;
+    text-shadow: -1px 1px black;
+}
+
+.logout{
+    color: white;
+    text-shadow: -1px 1px black;
+    min-height: 50px;
+    font-size: 15px
+    
 }
 
 .alert {
@@ -9,9 +25,9 @@ body {
 }
 
 form {
-    background-color: #dbd5d5;
-    width: 30%;
-    height: 250px;
+    
+    width: 50%;
+    height: 300px;
     margin: 20px auto;
     padding: 25px;
     border-radius: 2px;
@@ -23,27 +39,28 @@ input {
 }
 
 .log-in, .log-out, .register {
-  background-color: #00acb0;
-  border-radius: 4px;
+  
   color: #f8f8f8;
   min-height: 50px;
   min-width: 100px;
-  outline:0;
+  outline:5px;
+  border-color: white;
   cursor: pointer;
 }
 
 .log-in:hover, .log-out:hover, .register:hover {
-  background-color: #008183;
+
 }
 
 /* This line makes the "Register" and "Login" buttons look like links */
 .link-button {
     background:none;
-    color:inherit;
+    color:white;
     border:none;
     padding:0;
     font: inherit;
     outline:0;
-    border-bottom:1px solid #444; 
+    border-bottom:1px solid white; 
     cursor: pointer;
+    text-shadow: -1px 1px black;
 }

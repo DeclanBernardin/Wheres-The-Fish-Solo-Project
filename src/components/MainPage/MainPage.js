@@ -40,7 +40,7 @@ class MainPage extends Component {
     return(
       <div>
       <LoadScript id="loadScript" googleMapsApiKey={process.env.REACT_APP_API_KEY} >
-        <GoogleMap mapContainerStyle={{ height: "505px", width: "360px" }}
+        <GoogleMap mapContainerStyle={{ height: "515px", width: "360px" }}
           zoom={5}
           
           center={{lat: this.state.mainCenter.lat, lng: this.state.mainCenter.lng }}

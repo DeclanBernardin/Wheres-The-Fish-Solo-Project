@@ -1,28 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 
 const Nav = (props) => (
   <div className="nav">
     <Link to="/home">
-      <h2 className="nav-title">WTF</h2>
+      <h1 className="nav-title">Where The Fish?</h1>
     </Link>
     <div className="nav-right">
       <Link className="nav-link" to="/home">
         {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
         and call this link 'Login / Register' if they are not */}
-        {props.user.id ? props.user.username : 'Login / Register'}
+        {props.user.id ? props.user.username : ''}
       </Link>
       {/* Show the link to the info page and the logout button if the user is logged in */}
       {props.user.id && (
         <>
           <Link className="nav-link" to="/Mainpage">
-            Info Page
+            Map
           </Link>
-          <LogOutButton className="nav-link"/>
+          <button
+            className="logout"
+            onClick={() => props.dispatch({ type: 'LOGOUT' })}
+          >
+            Log Out
+  </button>
         </>
       )}
       {/* Always show this link since the about page is not protected */}
