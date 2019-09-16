@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'; 
 import { OverlayView } from '@react-google-maps/api';
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+import { EditorFormatAlignCenter } from 'material-ui/svg-icons';
+
+const styles = {
+    root: {
+        margin: '5px',
+        align: 'center'
+    },
+};
 
 class Overlay extends Component {
 
@@ -21,6 +31,7 @@ class Overlay extends Component {
         return (
             <div>
                 <OverlayView
+                className ="overlay"
                     position={{
                         lat: this.props.info.latitude,
                         lng: this.props.info.longitude
@@ -38,7 +49,11 @@ class Overlay extends Component {
                             <h3>Fish caught here:</h3> <h4>{this.props.info.fish_caught}</h4>
                         </div>
                         <div>
-                            <button>images</button>
+                            <Button variant="outlined"
+                                className="btn btn.button"
+                                color="inherit"
+                                type="submit"
+                                >images</Button>
                             {/*images button */}
                         </div>
                         <div>
@@ -54,10 +69,18 @@ class Overlay extends Component {
                             <h3>Water depth:</h3> <h4>{this.props.info.water_depth}</h4>
                         </div>
                         <div>
-                            <button onClick={() => { this.toEdit(this.props.info.id) }} type='button'>AddDetails</button>
+                            <Button variant="outlined"
+                                className={this.props.classes.root}
+                                color="primary"
+                                type="submit"
+                                onClick={() => { this.toEdit(this.props.info.id) }} type='button'>Add Details</Button>
                         </div>
                         <div>
-                            <button onClick={() => this.handleDelete(this.props.info.id)}>Delete</button>
+                            <Button variant="outlined"
+                                className={this.props.classes.root}
+                                color="secondary"
+                                type="submit"
+                                onClick={() => this.handleDelete(this.props.info.id)}>Delete</Button>
                         </div>
                     </div>
                 </OverlayView>
@@ -72,4 +95,4 @@ const mapStateToProps = reduxStore => {
     };
 };
 
-export default connect(mapStateToProps)(withRouter(Overlay));
+export default withStyles(styles)(withRouter(connect(mapStateToProps)(Overlay)));

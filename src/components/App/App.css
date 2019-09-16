@@ -64,3 +64,13 @@ input {
     cursor: pointer;
     text-shadow: -1px 1px black;
 }
+
+.btn{
+    padding: 10px
+}
+
+.addDetailsPage{
+    background-image: url("https://raw.githubusercontent.com/DeclanBernardin/Wheres-The-Fish-Solo-Project/master/thumbnail%20(2).jpeg");
+    background-size: 360px 640px;
+    text-align: center;
+}

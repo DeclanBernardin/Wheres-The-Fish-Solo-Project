@@ -1,10 +1,20 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'; 
 import { withRouter } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField'
+import { withStyles } from '@material-ui/core/styles';
+
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is, so it doesn't need 'connect()'
+const styles = {
+  root: {
+    margin: '34px',
+    borderColor: 'white',
+  },
+};
 
 class AddSpot extends Component {
   
@@ -34,16 +44,18 @@ console.log(this.state);
     type: 'ADD_DETAILS_TO_SPOT',
     payload: this.state
   })
+  this.props.history.push('/Mainpage')
 }
 
 
 
   render(){
     return(
-      <div>
+      <div className='addDetailsPage'>
+        <label className="login">
+            Spot name:
         <div>
-          <p>{this.state.name}</p>
-          <input placeholder="Name The Spot!" onChange= {
+          <TextField placeholder="Name The Spot!" onChange= {
           this.spotName = (event) => {
             this.setState({
               ...this.state,
@@ -51,11 +63,13 @@ console.log(this.state);
             })
 
           }
-          }></input>
+          }></TextField>
         </div>
+        </label>
+        <label className="login">
+            Type of fish caught here:
         <div>
-          <p>{this.state.fishCaught}</p>
-          <input placeholder="Type of fish caught here" onChange={
+          <TextField placeholder="Type of fish caught here" onChange={
             this.spotFish = (event) => {
               this.setState({
                 ...this.state,
@@ -63,11 +77,14 @@ console.log(this.state);
               })
 
             }
-          }></input>
+          }></TextField>
         </div>
+        </label>
+        <label className="login">
+            Pictures:
         <div>
-          <img src ={this.state.pictures} alt= 'fish pictures'></img>
-          <input placeholder="Pictures!" onChange={
+          <div></div>
+          <TextField placeholder="Pictures!" onChange={
           this.pictures = (event) => {
             this.setState({
               ...this.state,
@@ -75,11 +92,13 @@ console.log(this.state);
             })
 
           }
-          }></input>
+          }></TextField>
         </div>
+        </label>
+        <label className="login">
+            Weather:
         <div>
-          <p>{this.state.weather}</p>
-          <input placeholder="Weather" onChange={
+          <TextField placeholder="Weather" onChange={
           this.weather = (event) => {
             this.setState({
               ...this.state,
@@ -87,11 +106,13 @@ console.log(this.state);
             })
 
           }
-          }></input>
+          }></TextField>
         </div>
+        </label>
+        <label className="login">
+            Time of year to fish here:
         <div>
-          <p>{this.state.timeOfYear}</p>
-          <input placeholder="Time Of Year" onChange={
+          <TextField placeholder="Time Of Year" onChange={
           this.timeOfYear = (event) => {
             this.setState({
               ...this.state,
@@ -99,11 +120,13 @@ console.log(this.state);
             })
 
           }
-          }></input>
+          }></TextField>
         </div>
+        </label>
+        <label className="login">
+            Lure to use:
         <div>
-          <p>{this.state.lure}</p>
-          <input placeholder="Lure Used" onChange={
+          <TextField placeholder="Lure Used" onChange={
           this.lure = (event) => {
             this.setState({
               ...this.state,
@@ -111,11 +134,13 @@ console.log(this.state);
             })
 
           }
-          }></input>
+          }></TextField>
         </div>
+        </label>
+        <label className="login">
+            What type of fishing:
         <div>
-          <p>{this.state.typeOfFishing}</p>
-          <input placeholder="Type Of Fishing" onChange={
+          <TextField placeholder="Type Of Fishing" onChange={
           this.typeOfFishing = (event) => {
             this.setState({
               ...this.state,
@@ -123,11 +148,13 @@ console.log(this.state);
             })
 
           }
-          }></input>
+          }></TextField>
         </div>
+        </label>
+        <label className="login">
+            Water Depth:
         <div>
-          <p>{this.state.waterDepth}</p>
-          <input placeholder="Water Depth" onChange={
+          <TextField placeholder="Water Depth" onChange={
           this.waterDepth = (event) => {
             this.setState({
               ...this.state,
@@ -135,13 +162,26 @@ console.log(this.state);
             })
 
           }
-          }></input>
+          }></TextField>
         </div>
-        <button onClick={this.cancel}>Cancel</button>
-        <button onClick={this.addDetails}>Add Details!</button>
+        </label>
+        <Button 
+          variant="contained"
+          className={this.props.classes.root}
+          color="secondary"
+          type="submit"
+          name="submit"
+          value="log in"onClick={this.cancel}>Cancel</Button>
+        <Button id="loginBtn"
+          variant="contained"
+          className={this.props.classes.root}
+          color="inherit"
+          type="submit"
+          name="submit"
+          value="log in"onClick={this.addDetails}>Add Details!</Button>
       </div>
     )
   }
 }
 
-export default withRouter(connect()(AddSpot));
+export default withStyles(styles)(withRouter(connect()(AddSpot)));

@@ -69,6 +69,7 @@ class LoginPage extends Component {
           </div>
           <div>
             <Button
+              id="loginBtn"
               variant="outlined" 
               className="btn btn.button"
               color="inherit"
