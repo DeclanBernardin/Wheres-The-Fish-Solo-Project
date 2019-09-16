@@ -2,7 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField'
+import { withStyles } from '@material-ui/core/styles';
 
+const styles = {
+  root: {
+    margin: '10px',
+    align: 'center',
+   
+  },
+};
 
 class LoginPage extends Component {
   state = {
@@ -70,8 +78,8 @@ class LoginPage extends Component {
           <div>
             <Button
               id="loginBtn"
-              variant="outlined" 
-              className="btn btn.button"
+              variant="contained" 
+              className={this.props.classes.root}
               color="inherit"
               type="submit"
               name="submit"
@@ -100,4 +108,4 @@ const mapStateToProps = state => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps)(LoginPage);
+export default withStyles(styles)(connect(mapStateToProps)(LoginPage));
