@@ -1,7 +1,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
-    background-image: url("https://raw.githubusercontent.com/DeclanBernardin/Wheres-The-Fish-Solo-Project/master/thumbnail%20(1).jpeg");
+    background-image: url("https://raw.githubusercontent.com/DeclanBernardin/Wheres-The-Fish-Solo-Project/master/Fish%20Pics/thumbnail%20(1).jpeg");
     background-size: 360px 640px
 }
 
@@ -70,7 +70,12 @@ input {
 }
 
 .addDetailsPage{
-    background-image: url("https://raw.githubusercontent.com/DeclanBernardin/Wheres-The-Fish-Solo-Project/master/thumbnail%20(2).jpeg");
+    background-image: url("https://raw.githubusercontent.com/DeclanBernardin/Wheres-The-Fish-Solo-Project/master/Fish%20Pics/thumbnail%20(2).jpeg");
     background-size: 360px 640px;
     text-align: center;
+}
+
+.imagePage{
+    background-color: #f8f8f8;
+    padding: 10px
 }

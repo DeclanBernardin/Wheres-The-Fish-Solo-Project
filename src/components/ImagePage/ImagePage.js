@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 class ImagePage extends Component {
     render(){
         return(
-        <div>
-            <img src= {this.props.info.images} alt='pictures of fish'/>
+        <div className="imagePage">
+            <img src= {this.props.info.images} alt='pictures of fish' width= "335" length= "335"/>
         </div>
         )
     }
