@@ -23,7 +23,7 @@ class Overlay extends Component {
         console.log(id);
         this.props.dispatch({
             type: 'DELETE_SPOT',
-            payload: { id: id }
+            payload: {id: id}
         })
         this.props.dispatch({
             type: 'CLEAR_REDUCER'

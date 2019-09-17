@@ -20,7 +20,8 @@ class fishingSpotDetails extends Component {
             payload: {
                 lat: this.state.lat,
                 lng: this.state.lng,
-                id: this.state.id
+                id: this.state.id,
+                userid: this.state.user_Id
             }
         })
     }
@@ -55,7 +56,8 @@ class fishingSpotDetails extends Component {
                 ...this.state,
                 lat: event.latLng.lat(),
                 lng: event.latLng.lng(),
-                id: details.id
+                id: details.id, 
+                user_Id: details.user_id
             })
             this.updateSpotLocation()}} 
             position={{ lat: parseFloat(details.latitude), lng: parseFloat(details.longitude) }}

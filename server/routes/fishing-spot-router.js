@@ -20,33 +20,44 @@ router.get('/', (req, res) => {
  */
 router.post('/', (req, res) => {
 console.log(req.body);
-    let queryText = `INSERT INTO "fishing_spots" ("latitude", "longitude") VALUES ($1, $2);`;
-    pool.query(queryText, [req.body.lat, req.body.lng])
+console.log(req.user.id);
+    if (req.isAuthenticated()) {
+    let queryText = `INSERT INTO "fishing_spots" ("user_id", "latitude", "longitude") VALUES ($1, $2, $3);`;
+    pool.query(queryText, [req.user.id, req.body.lat, req.body.lng])
         .then(results => res.sendStatus(201))
         .catch(error => {
             console.log('error in server side POST', error);
         })
+    }
 });
 
 router.put('/:id', (req, res) => {
     console.log(req.body);
     console.log(req.params.id);
+    console.log(req.user.id);
+    if (req.isAuthenticated()) {
+        if(req.user.id === req.body.userid){
     let queryText = `UPDATE "fishing_spots" SET "latitude" = $1, "longitude" = $2 WHERE "id" = $3;`
     pool.query(queryText, [req.body.lat, req.body.lng, req.params.id])
         .then(results => res.sendStatus(201))
         .catch(error => {
             console.log('error in server side PUT', error);
         })
+    }
+    }
 })
 
 router.delete('/:id', (req, res) => {
-    console.log(req.params.id);
-    let queryText = `DELETE  FROM "fishing_spots" WHERE "id" = $1;`
-    pool.query(queryText, [req.params.id])
+    console.log('this is', req.params.id);
+    console.log('user id should be this', req.user.id);
+    if (req.isAuthenticated()) {
+    let queryText = `DELETE  FROM "fishing_spots" WHERE ("id" = $1 AND "user_id" = $2);`
+    pool.query(queryText, [req.params.id, req.user.id])
         .then(results => res.sendStatus(201))
         .catch(error => {
             console.log('error in server side DELETE', error);
         })
+    }
 })
 
 module.exports = router;

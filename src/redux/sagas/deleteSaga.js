@@ -5,6 +5,8 @@ function* deleteSpot(action) {
     try {
         // DELETE FROM THE SERVER 
         console.log('saga', action.payload);
+        console.log(action.payload);
+        
         let id = action.payload.id
         yield axios.delete(`/fishing/${id}`);
         yield put({
