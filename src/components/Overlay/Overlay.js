@@ -27,6 +27,10 @@ class Overlay extends Component {
         })
     }
 
+    toImagePage = () => {
+        this.props.history.push('/images')
+    }
+
     render() {
         return (
             <div>
@@ -53,6 +57,7 @@ class Overlay extends Component {
                                 className="btn btn.button"
                                 color="inherit"
                                 type="submit"
+                                onClick = {this.toImagePage}
                                 >images</Button>
                             {/*images button */}
                         </div>
