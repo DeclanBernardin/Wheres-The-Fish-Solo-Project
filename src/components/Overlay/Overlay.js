@@ -25,6 +25,9 @@ class Overlay extends Component {
             type: 'DELETE_SPOT',
             payload: { id: id }
         })
+        this.props.dispatch({
+            type: 'CLEAR_REDUCER'
+        })
     }
 
     toImagePage = () => {
