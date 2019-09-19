@@ -15,6 +15,7 @@ const styles = {
 
 class Overlay extends Component {
 
+    // sends the edited data to be saved in the database
     toEdit = (id) => {
         this.props.history.push(`addspot/${id}`)
         console.log(this.props.info.user_id);
@@ -24,6 +25,7 @@ class Overlay extends Component {
         })
     }
 
+    // deletes the data based on the id given to it
     handleDelete = (id) => {
         console.log(id);
         this.props.dispatch({
@@ -35,6 +37,7 @@ class Overlay extends Component {
         })
     }
 
+    // brings you to the images page to see the fish pics
     toImagePage = () => {
         this.props.history.push('/images')
     }
