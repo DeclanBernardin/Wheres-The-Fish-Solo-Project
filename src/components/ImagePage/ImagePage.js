@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
 
+// displays the images to the image page 
 class ImagePage extends Component {
     render(){
         return(

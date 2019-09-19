@@ -2,6 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
+// adds the main details to the spot
 router.put('/:id', (req, res) => {
     console.log(req.body);
     console.log(req.params.id);

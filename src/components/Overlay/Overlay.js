@@ -73,6 +73,9 @@ class Overlay extends Component {
                             {/*images button */}
                         </div>
                         <div>
+                            <h3>Weather:</h3> <h4>{this.props.info.weather}</h4>
+                        </div>
+                        <div>
                             <h3>Time of year:</h3> <h4>{this.props.info.time_of_year}</h4>
                         </div>
                         <div>

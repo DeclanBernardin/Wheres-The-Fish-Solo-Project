@@ -9,20 +9,24 @@ import { withStyles } from '@material-ui/core/styles';
 // It doesn't have local state, so it can be a function component.
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is, so it doesn't need 'connect()'
-const styles = {
+const styles = ({
   root: {
     margin: '34px',
     borderColor: 'white',
   },
-};
+  
+});
 
 class AddSpot extends Component {
   
-state={}
+state={
+  displayHidden: true,
+}
 
 componentDidMount(){
   this.fetchDetails()
 }
+
 
 //goes to the database and grabs the details of the item that has the id given 
 fetchDetails = (id) => {
@@ -58,7 +62,7 @@ console.log('text', this.props.info);
         <label className="login">
             Spot name:
         <div>
-          <TextField value={this.props.info.spot_name} onChange= {(event) => 
+          <TextField  value={this.props.info.spot_name} onChange= {(event) => 
            this.props.dispatch({
             type: 'EDIT_DETAIL_SPOT_NAME',
             payload: event.target.value
@@ -139,7 +143,7 @@ console.log('text', this.props.info);
             <TextField value={this.props.info.water_depth} onChange={(event) => 
               this.props.dispatch({
                 type: 'EDIT_DETAIL_WATER_DEPTH',
-                payload: event.target.value
+                payload:  event.target.value 
               })
           }></TextField>
         </div>
