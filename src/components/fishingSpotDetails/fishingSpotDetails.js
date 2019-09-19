@@ -11,8 +11,7 @@ class fishingSpotDetails extends Component {
         toggle: false,
     }
 
-    
-
+    // on drag end it changes the location of the marker and saves it to the database
     updateSpotLocation = () => {
         console.log(this.state);
         this.props.dispatch({
@@ -26,6 +25,7 @@ class fishingSpotDetails extends Component {
         })
     }
 
+    // gets that specific id so only one drop down is displayed at a time
     changeState = (id) => {
         this.setState({
             ...this.state,
