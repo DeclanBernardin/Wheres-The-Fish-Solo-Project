@@ -8,6 +8,7 @@ import FishingSpotDetails from '../fishingSpotDetails/fishingSpotDetails'
 // or even care what the redux state is, so it doesn't need 'connect()'
 
 class MainPage extends Component {
+  // holds the starting center for the map to start at on load. 
   state={
     map: {},
     mainCenter: {lat:46 , lng:-96 },
@@ -17,6 +18,7 @@ class MainPage extends Component {
     this.props.dispatch({type: 'GET_FISHING_SPOTS'}) 
   }
 
+  // takes the latitude and longitude of the spot clicked and sends it to the database to be stored.
   createSpot = () => {
     console.log(this.state);
     this.props.dispatch({
@@ -28,6 +30,7 @@ class MainPage extends Component {
     })
   }
 
+  // when you drag across the map it changes that to the new center so it doesn't recenter itself when you add a location.
   changeCenter = () => {
     this.setState({
       mainCenter: {lat: this.state.map.getCenter().lat(),
