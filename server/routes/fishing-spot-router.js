@@ -2,9 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-/**
- * GET route template
- */
+// gets the fishing spots and there details
 router.get('/', (req, res) => {
     let queryText = `SELECT * FROM "fishing_spots";`;
     pool.query(queryText)
@@ -15,9 +13,7 @@ router.get('/', (req, res) => {
         })
 });
 
-/**
- * POST route template
- */
+// adds the spot locations to the database 
 router.post('/', (req, res) => {
 console.log(req.body);
 console.log(req.user.id);
@@ -31,6 +27,7 @@ console.log(req.user.id);
     }
 });
 
+// updates the new location the spot is dragged to
 router.put('/:id', (req, res) => {
     console.log(req.body);
     console.log(req.params.id);
@@ -47,6 +44,7 @@ router.put('/:id', (req, res) => {
     }
 })
 
+// deletes the fishing spot based on the spots id and the id of the user
 router.delete('/:id', (req, res) => {
     console.log('this is', req.params.id);
     console.log('user id should be this', req.user.id);
