@@ -1,3 +1,6 @@
+
+
+//Reducer holds and changes the state of the objects in the addSpot.js and displays the current values
 const editHolderReducer = (state = [], action) => {
     switch (action.type) {
         case 'EDIT_OVERLAY':

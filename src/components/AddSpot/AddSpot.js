@@ -24,6 +24,7 @@ componentDidMount(){
   this.fetchDetails()
 }
 
+//goes to the database and grabs the details of the item that has the id given 
 fetchDetails = (id) => {
  console.log(this.props.match.params.id);
   this.setState({
@@ -38,6 +39,8 @@ this.props.dispatch({
 cancel = () => {
   this.props.history.push('/Mainpage')
 }
+
+//adds the details to the spot and updates them
 addDetails = () => {
 console.log('text', this.props.info);
   this.props.dispatch({

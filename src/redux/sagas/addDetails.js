@@ -1,6 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
+//sends the details to the router to add to the database 
 function* addDetails(action) {
     try {
         console.log('test', action.payload);
