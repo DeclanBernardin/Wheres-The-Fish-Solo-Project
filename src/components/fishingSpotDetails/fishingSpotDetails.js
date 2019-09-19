@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
-import { Marker, OverlayView} from '@react-google-maps/api';
+import { Marker } from '@react-google-maps/api';
 import { withRouter } from 'react-router-dom';
 import Overlay from '../Overlay/Overlay'
 

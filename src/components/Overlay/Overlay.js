@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { OverlayView } from '@react-google-maps/api';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-import { EditorFormatAlignCenter } from 'material-ui/svg-icons';
+
 
 const styles = {
     root: {
@@ -17,6 +17,11 @@ class Overlay extends Component {
 
     toEdit = (id) => {
         this.props.history.push(`addspot/${id}`)
+        console.log(this.props.info.user_id);
+        this.props.dispatch({
+            type: 'EDIT_OVERLAY',
+            payload: this.props.info
+        })
     }
 
     handleDelete = (id) => {
@@ -46,8 +51,8 @@ class Overlay extends Component {
                     mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}>
                     <div style={{
                         background: `white`,
-                        border: `1px solid #ccc`,
-                        padding: 15
+                        border: `1px solid black`,
+                        padding: 20
                     }}>
                         <div>
                             <h1>{this.props.info.spot_name}</h1>

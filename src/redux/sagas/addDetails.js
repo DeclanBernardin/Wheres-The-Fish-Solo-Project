@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function* addDetails(action) {
     try {
-        console.log(action.payload);
+        console.log('test', action.payload);
         let id = action.payload.id
         yield axios.put(`/spotDetails/${id}`, action.payload);
         yield put({

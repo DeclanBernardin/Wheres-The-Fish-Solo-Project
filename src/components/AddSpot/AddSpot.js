@@ -38,11 +38,11 @@ this.props.dispatch({
 cancel = () => {
   this.props.history.push('/Mainpage')
 }
-addDetails = (id) => {
-console.log(this.state);
+addDetails = () => {
+console.log('text', this.props.info);
   this.props.dispatch({
     type: 'ADD_DETAILS_TO_SPOT',
-    payload: this.state
+    payload: this.props.info
   })
   this.props.history.push('/Mainpage')
 }
@@ -55,28 +55,22 @@ console.log(this.state);
         <label className="login">
             Spot name:
         <div>
-          <TextField placeholder="Name The Spot!" onChange= {
-          this.spotName = (event) => {
-            this.setState({
-              ...this.state,
-              name: event.target.value
-            })
-
-          }
+          <TextField value={this.props.info.spot_name} onChange= {(event) => 
+           this.props.dispatch({
+            type: 'EDIT_DETAIL_SPOT_NAME',
+            payload: event.target.value
+           })
           }></TextField>
         </div>
         </label>
         <label className="login">
             Type of fish caught here:
         <div>
-          <TextField placeholder="Type of fish caught here" onChange={
-            this.spotFish = (event) => {
-              this.setState({
-                ...this.state,
-                fishCaught: event.target.value
+            <TextField value={this.props.info.fish_caught} onChange={(event) => 
+              this.props.dispatch({
+                type: 'EDIT_DETAIL_FISH_CAUGHT',
+                payload: event.target.value
               })
-
-            }
           }></TextField>
         </div>
         </label>
@@ -84,84 +78,66 @@ console.log(this.state);
             Pictures:
         <div>
           <div></div>
-          <TextField placeholder="Pictures!" onChange={
-          this.pictures = (event) => {
-            this.setState({
-              ...this.state,
-              pictures: event.target.value
-            })
-
-          }
+            <TextField value={this.props.info.images} onChange={(event) => 
+              this.props.dispatch({
+                type: 'EDIT_DETAIL_IMAGES',
+                payload: event.target.value
+              })
           }></TextField>
         </div>
         </label>
         <label className="login">
             Weather:
         <div>
-          <TextField placeholder="Weather" onChange={
-          this.weather = (event) => {
-            this.setState({
-              ...this.state,
-              weather: event.target.value
-            })
-
-          }
+            <TextField value={this.props.info.weather} onChange={(event) => 
+              this.props.dispatch({
+                type: 'EDIT_DETAIL_WEATHER',
+                payload: event.target.value
+              })
           }></TextField>
         </div>
         </label>
         <label className="login">
             Time of year to fish here:
         <div>
-          <TextField placeholder="Time Of Year" onChange={
-          this.timeOfYear = (event) => {
-            this.setState({
-              ...this.state,
-              timeOfYear: event.target.value
-            })
-
-          }
+            <TextField value={this.props.info.time_of_year} onChange={(event) => 
+              this.props.dispatch({
+                type: 'EDIT_DETAIL_TIME_OF_YEAR',
+                payload: event.target.value
+              })
           }></TextField>
         </div>
         </label>
         <label className="login">
             Lure to use:
         <div>
-          <TextField placeholder="Lure Used" onChange={
-          this.lure = (event) => {
-            this.setState({
-              ...this.state,
-              lure: event.target.value
-            })
-
-          }
+            <TextField value={this.props.info.lure_used} onChange={(event) => 
+              this.props.dispatch({
+                type: 'EDIT_DETAIL_LURE_USED',
+                payload: event.target.value
+              })
           }></TextField>
         </div>
         </label>
         <label className="login">
             What type of fishing:
         <div>
-          <TextField placeholder="Type Of Fishing" onChange={
-          this.typeOfFishing = (event) => {
-            this.setState({
-              ...this.state,
-              typeOfFishing: event.target.value
-            })
-
-          }
+            <TextField value={this.props.info.type_of_fishing} onChange={(event) => 
+              this.props.dispatch({
+                type: 'EDIT_DETAIL_TYPE_OF_FISHING',
+                payload: event.target.value
+              })
           }></TextField>
         </div>
         </label>
         <label className="login">
             Water Depth:
         <div>
-          <TextField placeholder="Water Depth" onChange={
-          this.waterDepth = (event) => {
-            this.setState({
-              ...this.state,
-              waterDepth: event.target.value
-            })
-
-          }
+            <TextField value={this.props.info.water_depth} onChange={(event) => 
+              this.props.dispatch({
+                type: 'EDIT_DETAIL_WATER_DEPTH',
+                payload: event.target.value
+              })
           }></TextField>
         </div>
         </label>
@@ -184,4 +160,10 @@ console.log(this.state);
   }
 }
 
-export default withStyles(styles)(withRouter(connect()(AddSpot)));
+const mapStateToProps = reduxStore => {
+  return {
+    info: reduxStore.editOverlayReducer
+  };
+};
+
+export default withStyles(styles)(withRouter(connect(mapStateToProps)(AddSpot)));
