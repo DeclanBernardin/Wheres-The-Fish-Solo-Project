@@ -45,6 +45,7 @@ class Overlay extends Component {
     render() {
         return (
             <div>
+                
                 <OverlayView
                 className ="overlay"
                     position={{
@@ -87,20 +88,20 @@ class Overlay extends Component {
                         <div>
                             <h3>Water depth:</h3> <h4>{this.props.info.water_depth}</h4>
                         </div>
-                        <div>
+                        {this.props.user.id == this.props.info.user_id &&
+                        (<div>
                             <Button variant="contained"
                                 className={this.props.classes.root}
                                 color="primary"
                                 type="submit"
                                 onClick={() => { this.toEdit(this.props.info.id) }} type='button'>Add Details</Button>
-                        </div>
-                        <div>
                             <Button variant="contained"
                                 className={this.props.classes.root}
                                 color="secondary"
                                 type="submit"
                                 onClick={() => this.handleDelete(this.props.info.id)}>Delete</Button>
-                        </div>
+                        </div>)
+                    }
                     </div>
                 </OverlayView>
             </div>
@@ -110,7 +111,8 @@ class Overlay extends Component {
 
 const mapStateToProps = reduxStore => {
     return {
-        info : reduxStore.overlayReducer
+        info : reduxStore.overlayReducer,
+        user : reduxStore.user,
     };
 };
 

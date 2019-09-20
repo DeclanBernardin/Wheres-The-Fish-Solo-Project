@@ -13,6 +13,7 @@ function* createFishingSpot(action) {
     }
 }
 
+// gets each fishing spot and it details
 function* getFishingSpots() {
     try {
         //GET THE ITEMS FROM OUR SERVER

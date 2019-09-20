@@ -27,7 +27,6 @@ componentDidMount(){
   this.fetchDetails()
 }
 
-
 //goes to the database and grabs the details of the item that has the id given 
 fetchDetails = (id) => {
  console.log(this.props.match.params.id);
