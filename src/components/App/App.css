@@ -8,7 +8,7 @@ body {
 
 .login{
     color: white;
-    text-shadow: -1px 1px black;
+    text-shadow: -2px 2px black;
 }
 
 .logout{
@@ -62,7 +62,7 @@ input {
     outline:0;
     border-bottom:1px solid white; 
     cursor: pointer;
-    text-shadow: -1px 1px black;
+    text-shadow: -2px 2px black;
 }
 
 .btn{
