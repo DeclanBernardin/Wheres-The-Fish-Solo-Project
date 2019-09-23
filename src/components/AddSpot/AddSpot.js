@@ -11,9 +11,13 @@ import { withStyles } from '@material-ui/core/styles';
 // or even care what the redux state is, so it doesn't need 'connect()'
 const styles = ({
   root: {
-    margin: '34px',
+    margin: '15px',
     borderColor: 'white',
   },
+  text: {
+    backgroundColor: 'white',
+    margin: '3px'
+  }
   
 });
 
@@ -61,7 +65,7 @@ console.log('text', this.props.info);
         <label className="login">
             Spot name:
         <div>
-          <TextField  value={this.props.info.spot_name} onChange= {(event) => 
+            <TextField className={this.props.classes.text} value={this.props.info.spot_name} onChange= {(event) => 
            this.props.dispatch({
             type: 'EDIT_DETAIL_SPOT_NAME',
             payload: event.target.value
@@ -72,7 +76,7 @@ console.log('text', this.props.info);
         <label className="login">
             Type of fish caught here:
         <div>
-            <TextField value={this.props.info.fish_caught} onChange={(event) => 
+            <TextField className={this.props.classes.text} value={this.props.info.fish_caught} onChange={(event) => 
               this.props.dispatch({
                 type: 'EDIT_DETAIL_FISH_CAUGHT',
                 payload: event.target.value
@@ -84,7 +88,7 @@ console.log('text', this.props.info);
             Pictures:
         <div>
           <div></div>
-            <TextField value={this.props.info.images} onChange={(event) => 
+            <TextField className={this.props.classes.text} value={this.props.info.images} onChange={(event) => 
               this.props.dispatch({
                 type: 'EDIT_DETAIL_IMAGES',
                 payload: event.target.value
@@ -95,7 +99,7 @@ console.log('text', this.props.info);
         <label className="login">
             Weather:
         <div>
-            <TextField value={this.props.info.weather} onChange={(event) => 
+            <TextField className={this.props.classes.text} value={this.props.info.weather} onChange={(event) => 
               this.props.dispatch({
                 type: 'EDIT_DETAIL_WEATHER',
                 payload: event.target.value
@@ -106,7 +110,7 @@ console.log('text', this.props.info);
         <label className="login">
             Time of year to fish here:
         <div>
-            <TextField value={this.props.info.time_of_year} onChange={(event) => 
+            <TextField className={this.props.classes.text} value={this.props.info.time_of_year} onChange={(event) => 
               this.props.dispatch({
                 type: 'EDIT_DETAIL_TIME_OF_YEAR',
                 payload: event.target.value
@@ -117,7 +121,7 @@ console.log('text', this.props.info);
         <label className="login">
             Lure to use:
         <div>
-            <TextField value={this.props.info.lure_used} onChange={(event) => 
+            <TextField className={this.props.classes.text} value={this.props.info.lure_used} onChange={(event) => 
               this.props.dispatch({
                 type: 'EDIT_DETAIL_LURE_USED',
                 payload: event.target.value
@@ -128,7 +132,7 @@ console.log('text', this.props.info);
         <label className="login">
             What type of fishing:
         <div>
-            <TextField value={this.props.info.type_of_fishing} onChange={(event) => 
+            <TextField className={this.props.classes.text} value={this.props.info.type_of_fishing} onChange={(event) => 
               this.props.dispatch({
                 type: 'EDIT_DETAIL_TYPE_OF_FISHING',
                 payload: event.target.value
@@ -139,7 +143,7 @@ console.log('text', this.props.info);
         <label className="login">
             Water Depth:
         <div>
-            <TextField value={this.props.info.water_depth} onChange={(event) => 
+            <TextField className={this.props.classes.text} value={this.props.info.water_depth} onChange={(event) => 
               this.props.dispatch({
                 type: 'EDIT_DETAIL_WATER_DEPTH',
                 payload:  event.target.value 

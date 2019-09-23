@@ -4,12 +4,13 @@
     display: inline-block;
     color: White;
     padding-left: 10px;
-    text-shadow: -1px 1px black;
+    text-shadow: -2px 2px black;
     font-family: 
 }
 
 .nav {
   overflow: hidden;
+  background-color: 
 }
 
 .nav-link {
@@ -25,7 +26,7 @@
   border:none;
   cursor: pointer;
   outline:0;
-  text-shadow: -1px 1px black;
+  text-shadow: -2px 2px black;
   font-weight: bold;
 }
 
